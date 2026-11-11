@@ -1,0 +1,380 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --pastel-lavender: #E9D5FF;
+    --pastel-pink: #FBCFE8;
+    --pastel-mint: #A7F3D0;
+    --pastel-blue: #BAE6FD;
+    --pastel-peach: #FDE68A;
+    --pastel-dark: #1E1A29;
+    --pastel-panel: #272236;
+  }
+}
+
+/* Custom font utilities */
+.font-pixel {
+  font-family: 'DotGothic16', 'VT323', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-pixel-text {
+  font-family: 'DotGothic16', monospace;
+  letter-spacing: 0.04em;
+  text-rendering: geometricPrecision;
+}
+
+.font-silkscreen {
+  font-family: 'Silkscreen', 'DotGothic16', monospace;
+  letter-spacing: 0.06em;
+}
+
+.font-press-start {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-vt {
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.06em;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Stepped Pixel Art Dialogue Box styling */
+.pixel-corners-box {
+  clip-path: polygon(
+    0 10px,
+    4px 10px,
+    4px 6px,
+    6px 6px,
+    6px 4px,
+    10px 4px,
+    10px 0,
+    calc(100% - 10px) 0,
+    calc(100% - 10px) 4px,
+    calc(100% - 6px) 4px,
+    calc(100% - 6px) 6px,
+    calc(100% - 4px) 6px,
+    calc(100% - 4px) 10px,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 4px) calc(100% - 10px),
+    calc(100% - 4px) calc(100% - 6px),
+    calc(100% - 6px) calc(100% - 6px),
+    calc(100% - 6px) calc(100% - 4px),
+    calc(100% - 10px) calc(100% - 4px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    10px calc(100% - 4px),
+    6px calc(100% - 4px),
+    6px calc(100% - 6px),
+    4px calc(100% - 6px),
+    4px calc(100% - 10px),
+    0 calc(100% - 10px)
+  );
+}
+
+.pixel-corners-sm {
+  clip-path: polygon(
+    0 6px,
+    2px 6px,
+    2px 4px,
+    4px 4px,
+    4px 2px,
+    6px 2px,
+    6px 0,
+    calc(100% - 6px) 0,
+    calc(100% - 6px) 2px,
+    calc(100% - 4px) 2px,
+    calc(100% - 4px) 4px,
+    calc(100% - 2px) 4px,
+    calc(100% - 2px) 6px,
+    100% 6px,
+    100% calc(100% - 6px),
+    calc(100% - 2px) calc(100% - 6px),
+    calc(100% - 2px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 2px),
+    calc(100% - 6px) calc(100% - 2px),
+    calc(100% - 6px) 100%,
+    6px 100%,
+    6px calc(100% - 2px),
+    4px calc(100% - 2px),
+    4px calc(100% - 4px),
+    2px calc(100% - 4px),
+    2px calc(100% - 6px),
+    0 calc(100% - 6px)
+  );
+}
+
+.pixel-art-inner-line {
+  box-shadow:
+    inset 0 0 0 2px #824B85;
+}
+
+/* Pastel Retro Pixel Window & Borders */
+.pixel-pastel-frame {
+  box-shadow:
+    0 0 0 2px #382F4E,
+    0 0 0 4px #D8B4FE,
+    0 0 0 6px #FBCFE8,
+    0 20px 40px -10px rgba(216, 180, 254, 0.25);
+}
+
+.pixel-pastel-box {
+  box-shadow: 
+    inset -2px -2px 0px 0px #342A4A,
+    inset 2px 2px 0px 0px #F3E8FF,
+    0 0 0 2px #261F36;
+}
+
+.pixel-pastel-inset {
+  box-shadow: 
+    inset 2px 2px 0px 0px #1A1624,
+    inset -2px -2px 0px 0px #D8B4FE,
+    0 0 0 1px #261F36;
+}
+
+.pixel-pastel-button {
+  box-shadow: 
+    inset -1px -1px 0px 0px #A895C9,
+    inset 1px 1px 0px 0px #FFFFFF,
+    0 0 0 1px #4C3D69;
+  transition: all 0.08s ease;
+}
+
+.pixel-pastel-button:active {
+  box-shadow: 
+    inset 1px 1px 0px 0px #A895C9,
+    inset -1px -1px 0px 0px #FFFFFF,
+    0 0 0 1px #4C3D69;
+  transform: translate(1px, 1px);
+}
+
+/* Glitch Animations for Visual 1 to Visual 2 Transition */
+@keyframes glitch-slice-1 {
+  0% {
+    clip-path: inset(15% 0 70% 0);
+    transform: translate(-6px, 1px) skewX(2deg);
+    filter: drop-shadow(4px 0 0 rgba(244, 114, 182, 0.8));
+  }
+  20% {
+    clip-path: inset(50% 0 20% 0);
+    transform: translate(6px, -2px) skewX(-3deg);
+    filter: drop-shadow(-4px 0 0 rgba(167, 243, 208, 0.8));
+  }
+  40% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-8px, 3px) skewX(4deg);
+    filter: drop-shadow(5px 0 0 rgba(186, 230, 253, 0.9));
+  }
+  60% {
+    clip-path: inset(2% 0 85% 0);
+    transform: translate(7px, -1px);
+    filter: drop-shadow(-5px 0 0 rgba(244, 114, 182, 0.85));
+  }
+  80% {
+    clip-path: inset(35% 0 45% 0);
+    transform: translate(-4px, 2px) skewX(-2deg);
+    filter: drop-shadow(3px 0 0 rgba(167, 243, 208, 0.8));
+  }
+  100% {
+    clip-path: inset(65% 0 10% 0);
+    transform: translate(0, 0);
+    filter: none;
+  }
+}
+
+@keyframes glitch-slice-2 {
+  0% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(8px, -2px);
+    filter: drop-shadow(-4px 0 0 rgba(186, 230, 253, 0.8));
+  }
+  25% {
+    clip-path: inset(10% 0 75% 0);
+    transform: translate(-7px, 3px) skewX(3deg);
+    filter: drop-shadow(4px 0 0 rgba(244, 114, 182, 0.8));
+  }
+  50% {
+    clip-path: inset(40% 0 35% 0);
+    transform: translate(6px, -1px) skewX(-4deg);
+    filter: drop-shadow(-5px 0 0 rgba(221, 214, 254, 0.9));
+  }
+  75% {
+    clip-path: inset(75% 0 12% 0);
+    transform: translate(-5px, 2px);
+    filter: drop-shadow(4px 0 0 rgba(167, 243, 208, 0.8));
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
+    filter: none;
+  }
+}
+
+@keyframes glitch-flash {
+  0% { opacity: 0.95; filter: contrast(180%) brightness(140%) hue-rotate(90deg); }
+  25% { opacity: 0.8; filter: contrast(250%) brightness(90%) hue-rotate(180deg); }
+  50% { opacity: 1; filter: contrast(160%) brightness(170%) hue-rotate(270deg); }
+  75% { opacity: 0.85; filter: contrast(220%) brightness(110%) hue-rotate(45deg); }
+  100% { opacity: 0; filter: none; }
+}
+
+.glitch-layer-1 {
+  animation: glitch-slice-1 0.22s infinite steps(2);
+}
+
+.glitch-layer-2 {
+  animation: glitch-slice-2 0.25s infinite steps(2);
+}
+
+.glitch-flash-overlay {
+  animation: glitch-flash 0.65s forwards;
+}
+
+/* Scanline and CRT Overlay with pastel tint */
+.crt-overlay {
+  background: linear-gradient(
+    rgba(233, 213, 255, 0) 50%, 
+    rgba(30, 26, 41, 0.2) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(244, 114, 182, 0.03),
+    rgba(167, 243, 208, 0.02),
+    rgba(186, 230, 253, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Subtle CRT Vignette with soft pastel tint */
+.crt-vignette {
+  background: radial-gradient(circle at center, transparent 80%, rgba(30, 26, 41, 0.15) 100%);
+  pointer-events: none;
+}
+
+/* Blinking click-to-continue chevron indicator */
+@keyframes pixel-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(3px);
+    opacity: 0.4;
+  }
+}
+
+.animate-pixel-bounce {
+  animation: pixel-bounce 0.8s infinite ease-in-out;
+}
+
+/* Custom scrollbar with pastel styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #272236;
+  border-left: 1px solid #382F4E;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8B4FE;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FBCFE8;
+}
+
+/* Camera Shutter Flash Animation */
+@keyframes camera-flash {
+  0% { opacity: 0.95; }
+  100% { opacity: 0; }
+}
+
+.camera-flash-overlay {
+  animation: camera-flash 0.35s ease-out forwards;
+}
+
+/* itch.io Style Game Embed & Fullscreen Overlay Enforcements */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  background-color: #07050D;
+}
+
+/* Fullscreen seamless overlay container */
+.game-overlay-container {
+  width: 100vw;
+  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100%;
+  max-height: 100%;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000000;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Strict media stretch & scale rules: completely fills window frame with zero black bars and zero cropping */
+.novel-scene-media {
+  object-fit: fill !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+}
+
+/* Modern responsive 16:9 widescreen visual novel container */
+.novel-window-frame {
+  aspect-ratio: 16 / 9;
+  width: min(calc(100vh * (16 / 9)), 100vw);
+  width: min(calc(100dvh * (16 / 9)), 100dvw);
+  height: min(100vh, calc(100vw * (9 / 16)));
+  height: min(100dvh, calc(100dvw * (9 / 16)));
+  max-width: 100vw;
+  max-width: 100dvw;
+  max-height: 100vh;
+  max-height: 100dvh;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px), (max-height: 500px) {
+  .novel-window-frame {
+    width: min(calc(100vh * (16 / 9)), 100vw);
+    width: min(calc(100dvh * (16 / 9)), 100dvw);
+    height: min(100vh, calc(100vw * (9 / 16)));
+    height: min(100dvh, calc(100dvw * (9 / 16)));
+    max-width: 100vw;
+    max-width: 100dvw;
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+}
+
+

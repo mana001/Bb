@@ -1,0 +1,42 @@
+
+name: Extract ZIP
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract ZIP without outer folder
+        run: |
+          mkdir -p extracted
+          unzip Cin-novel.zip -d extracted
+          find extracted -mindepth 1 -maxdepth 1 -type d -exec sh -c '
+            for dir do
+              if [ "$(find "$dir" -mindepth 1 -maxdepth 1 | wc -l)" -gt 0 ]; then
+                cp -r "$dir"/. extracted/
+                rm -rf "$dir"
+              fi
+            done
+          ' sh {} +
+
+      - name: Move files to repository root
+        run: |
+          cp -r extracted/. .
+          rm -rf extracted Cin-novel.zip
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Extract ZIP contents" || exit 0
+          git push
